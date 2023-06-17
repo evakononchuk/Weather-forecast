@@ -33,9 +33,6 @@ a:hover {
   vertical-align: top;
 }
 
-.celsius {
-  padding: 6px 0 0 6px;
-}
 .day {
   line-height: 20px;
   font-size: 16px;
@@ -46,28 +43,8 @@ li:first-letter {
   text-transform: capitalize;
 }
 
-.active {
-  border-left: 1px solid rgba(0, 0, 0, 0.177);
-  border-right: 1px solid rgba(0, 0, 0, 0.177);
-}
-
 .city {
   margin-top: 20px;
-}
-
-.celsius a {
-  color: #21252a;
-  cursor: default;
-}
-
-.celsius .active {
-  cursor: default;
-  color: #2a7cf6;
-  border: none;
-}
-
-.celsius a:hover {
-  text-decoration: none;
 }
 
 .form-control {

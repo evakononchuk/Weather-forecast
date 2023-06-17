@@ -21,9 +21,6 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
-let isoDateString = new Date().toISOString();
-console.log(isoDateString);
-
 //---------------------------------------------
 let apiKey = '535cacbb3f8a0df0aeb4790235b9541f';
 let apiUrl = 'https://api.openweathermap.org/data/2.5/weather?';
@@ -38,7 +35,6 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-  console.log(response.data);
   let forecastElement = document.querySelector('#forecast');
   let forecastHTML = `<div class='row'>`;
 
@@ -123,11 +119,6 @@ function searchCity(event) {
   let cityName = document.querySelector('#city-search').value;
   let cityUrl = `${apiUrl}q=${cityName}&appid=${apiKey}&units=metric`;
   axios.get(cityUrl).then(showCurrentParameters);
-
-  console.log(cityName);
-
-  celsius.classList.add('active');
-  fahrenheit.classList.remove('active');
 }
 
 let formButton = document.querySelector('form');
@@ -144,28 +135,3 @@ function getCurrentPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showPosition);
 }
-
-function showFahrenheit(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  celsius.classList.remove('active');
-  fahrenheit.classList.add('active');
-  let currentTemperature = document.querySelector('#degree');
-  currentTemperature.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function showCelsius(event) {
-  event.preventDefault();
-  let currentTemperature = document.querySelector('#degree');
-  celsius.classList.add('active');
-  fahrenheit.classList.remove('active');
-  currentTemperature.innerHTML = Math.round(celsiusTemperature);
-}
-
-let celsiusTemperature = null;
-
-let fahrenheit = document.querySelector('#fahrenheit-link');
-fahrenheit.addEventListener('click', showFahrenheit);
-
-let celsius = document.querySelector('#celsius-link');
-celsius.addEventListener('click', showCelsius);
